@@ -26,7 +26,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         {
             var thisAmount = 0m;
 
-            //determines the amount for each line
+            // Now this is a lot about movie. So shouldn't it be in the Movie class?
             switch (Movie.PriceCode)
             {
                 case Movie.REGULAR:
