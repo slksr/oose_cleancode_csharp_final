@@ -29,7 +29,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
             foreach (var each in _rentals)
             {
-                var thisAmount = AmountFor(each);
+                var thisAmount = each.Amount();
                 result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
             }
 
@@ -88,49 +88,11 @@ namespace OOSE.CleanCode.CSharp.VideoStore
             decimal totalAmount = 0m;
             foreach (var each in rentals)
             {
-                var thisAmount = AmountFor(each);
+                var thisAmount = each.Amount();
                 totalAmount += thisAmount;
             }
 
             return totalAmount;
         }
-
-        /// <summary>
-        /// Calculate the amount for a rental movie
-        /// </summary>
-        /// <param name="each"></param>
-        /// <returns></returns>
-        /// <remarks>This all about Rentals, so what is it doing in the Customer class?</remarks>
-        private decimal AmountFor(Rental each)
-        {
-            var thisAmount = 0m;
-
-            //determines the amount for each line
-            switch (each.Movie.PriceCode)
-            {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.DaysRented > 2)
-                    {
-                        thisAmount += (each.DaysRented - 2) * 1.5m;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.DaysRented * 3;
-                    break;
-                case Movie.CHILDREN:
-                    thisAmount += 1.5m;
-                    if (each.DaysRented > 3)
-                    {
-                        thisAmount += (each.DaysRented - 3) * 1.5m;
-                    }
-                    break;
-
-            }
-
-            return thisAmount;
-        }
-
-
     }
 }
