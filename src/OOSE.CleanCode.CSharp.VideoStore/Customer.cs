@@ -25,7 +25,6 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
         public string Statement()
         {
-            var frequentRenterPoints = 0;
             var totalAmount = 0m;
             var result = Header(Name);
 
@@ -56,17 +55,21 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
                 }
 
+                result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
+                totalAmount += thisAmount;
+            }
+
+            // just the frequentRenterPoints
+            int frequentRenterPoints = 0;
+            foreach (var each in _rentals)
+            {
                 frequentRenterPoints++;
 
                 if (each.Movie.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
                 {
                     frequentRenterPoints++;
                 }
-
-                result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
-                totalAmount += thisAmount;
             }
-
 
             result += Footer(frequentRenterPoints, totalAmount);
 
