@@ -10,10 +10,14 @@ namespace OOSE.CleanCode.CSharp.VideoStore
     {
         private Price _price;
 
-        public Movie(string title, int priceCode)
+        public Movie(string title, int priceCode) :this(title, new Price(priceCode))
         {
+        }
+
+        public Movie(string title, Price price)
+        {
+            _price = price;
             Title = title;
-            _price = new Price(priceCode);
         }
 
         public const int REGULAR = 0;
