@@ -59,17 +59,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
                 totalAmount += thisAmount;
             }
 
-            // just the frequentRenterPoints
-            int frequentRenterPoints = 0;
-            foreach (var each in _rentals)
-            {
-                frequentRenterPoints++;
-
-                if (each.Movie.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
-                {
-                    frequentRenterPoints++;
-                }
-            }
+            int frequentRenterPoints = FrequentRenderPoints(_rentals);
 
             result += Footer(frequentRenterPoints, totalAmount);
 
@@ -91,6 +81,27 @@ namespace OOSE.CleanCode.CSharp.VideoStore
             return footer;
         }
 
+        /// <summary>
+        /// Calculate Frequent Render Points
+        /// </summary>
+        /// <param name="rentals"></param>
+        /// <returns></returns>
+        private int FrequentRenderPoints(List<Rental> rentals)
+        {
+            // just the frequentRenterPoints
+            int frequentRenterPoints = 0;
+            foreach (var each in rentals)
+            {
+                frequentRenterPoints++;
+
+                if (each.Movie.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
+                {
+                    frequentRenterPoints++;
+                }
+            }
+
+            return frequentRenterPoints;
+        }
 
     }
 }
