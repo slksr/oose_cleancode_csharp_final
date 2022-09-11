@@ -36,6 +36,13 @@ namespace OOSE.CleanCode.CSharp.VideoStore
                 totalAmount += thisAmount;
             }
 
+            totalAmount = 0m;
+            foreach (var each in _rentals)
+            {
+                var thisAmount = AmountFor(each);
+                totalAmount += thisAmount;
+            }
+
             int frequentRenterPoints = FrequentRenderPoints(_rentals);
 
             result += Footer(frequentRenterPoints, totalAmount);
