@@ -26,6 +26,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
             var thisAmount = 0m;
             switch (PriceCode)
             {
+                // todo: Now we can change these enums in its own classes and use polymorphism.
                 case REGULAR:
                     thisAmount += 2;
                     if (daysRented > 2)
