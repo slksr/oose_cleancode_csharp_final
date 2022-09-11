@@ -69,7 +69,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
             {
                 frequentRenterPoints++;
 
-                if (each.Movie.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
+                if (each.Movie.Price.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
                 {
                     frequentRenterPoints++;
                 }
