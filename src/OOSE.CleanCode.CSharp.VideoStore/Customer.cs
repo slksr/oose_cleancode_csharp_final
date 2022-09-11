@@ -25,18 +25,15 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
         public string Statement()
         {
-            var totalAmount = 0m;
             var result = Header(Name);
 
             foreach (var each in _rentals)
             {
                 var thisAmount = AmountFor(each);
-
                 result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
-                totalAmount += thisAmount;
             }
 
-            totalAmount = 0m;
+            decimal totalAmount = 0m;
             foreach (var each in _rentals)
             {
                 var thisAmount = AmountFor(each);
