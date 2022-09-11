@@ -30,30 +30,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
             foreach (var each in _rentals)
             {
-                var thisAmount = 0m;
-
-                //dtermines the amount for each line
-                switch (each.Movie.PriceCode)
-                {
-                    case Movie.REGULAR:
-                        thisAmount += 2;
-                        if (each.DaysRented > 2)
-                        {
-                            thisAmount += (each.DaysRented - 2) * 1.5m;
-                        }
-                        break;
-                    case Movie.NEW_RELEASE:
-                        thisAmount += each.DaysRented * 3;
-                        break;
-                    case Movie.CHILDREN:
-                        thisAmount += 1.5m;
-                        if (each.DaysRented > 3)
-                        {
-                            thisAmount += (each.DaysRented - 3) * 1.5m;
-                        }
-                        break;
-
-                }
+                var thisAmount = AmountFor(each);
 
                 result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
                 totalAmount += thisAmount;
@@ -65,6 +42,36 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
 
             return result;
+        }
+
+        private decimal AmountFor(Rental each)
+        {
+            var thisAmount = 0m;
+
+            //determines the amount for each line
+            switch (each.Movie.PriceCode)
+            {
+                case Movie.REGULAR:
+                    thisAmount += 2;
+                    if (each.DaysRented > 2)
+                    {
+                        thisAmount += (each.DaysRented - 2) * 1.5m;
+                    }
+                    break;
+                case Movie.NEW_RELEASE:
+                    thisAmount += each.DaysRented * 3;
+                    break;
+                case Movie.CHILDREN:
+                    thisAmount += 1.5m;
+                    if (each.DaysRented > 3)
+                    {
+                        thisAmount += (each.DaysRented - 3) * 1.5m;
+                    }
+                    break;
+
+            }
+
+            return thisAmount;
         }
 
         private string Header(string name)
