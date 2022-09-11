@@ -100,6 +100,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         /// </summary>
         /// <param name="each"></param>
         /// <returns></returns>
+        /// <remarks>This all about Rentals, so what is it doing in the Customer class?</remarks>
         private decimal AmountFor(Rental each)
         {
             var thisAmount = 0m;
