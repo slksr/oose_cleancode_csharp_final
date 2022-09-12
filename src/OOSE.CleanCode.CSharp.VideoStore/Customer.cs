@@ -33,7 +33,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
                 result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
             }
 
-            decimal totalAmount = TotalAmount(_rentals);
+            double totalAmount = TotalAmount(_rentals);
             int frequentRenterPoints = FrequentRenderPoints(_rentals);
 
             result += Footer(frequentRenterPoints, totalAmount);
@@ -47,7 +47,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
             return "Rental Record for " + name + "\n";
         }
 
-        private string Footer(int frequentRenterPoints, decimal totalAmount)
+        private string Footer(int frequentRenterPoints, double totalAmount)
         {
             // add footer
             string footer1 = "You owed " + totalAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
@@ -83,9 +83,9 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         /// </summary>
         /// <param name="rentals"></param>
         /// <returns></returns>
-        private decimal TotalAmount(List<Rental> rentals)
+        private double TotalAmount(List<Rental> rentals)
         {
-            decimal totalAmount = 0m;
+            double totalAmount = 0;
             foreach (var each in rentals)
             {
                 var thisAmount = each.Amount();

@@ -41,8 +41,8 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Tests
         public void TestMultipleRegularStatement()
         {
             _customer.AddRental(new Rental(new Movie("Plan 9 from Outer Space", new RegularPrice()), 1));
-            _customer.AddRental(new Rental(new Movie("8 1/2", new Price(Movie.REGULAR)), 2));
-            _customer.AddRental(new Rental(new Movie("Eraserhead", new Price(Movie.REGULAR)), 3));
+            _customer.AddRental(new Rental(new Movie("8 1/2", new RegularPrice()), 2));
+            _customer.AddRental(new Rental(new Movie("Eraserhead", new RegularPrice()), 3));
 
             Assert.Equal(_customer.Statement(),
                          "Rental Record for Fred\n\tPlan 9 from Outer Space\t2.0\n\t8 1/2\t2.0\n\tEraserhead\t3.5\nYou owed 7.5\nYou earned 3 frequent renter points \n");

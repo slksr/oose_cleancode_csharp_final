@@ -8,12 +8,12 @@
            
         }
 
-        public decimal Amount(int daysRented)
+        public override double Amount(int daysRented)
         {
-            decimal thisAmount = 2;
+            double thisAmount = 2.0;
             if (daysRented > 2)
             {
-                thisAmount += (daysRented - 2) * 1.5m;
+                thisAmount += (daysRented - 2) * 1.5;
             }
 
             return thisAmount;

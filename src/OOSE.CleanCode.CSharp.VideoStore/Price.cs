@@ -17,19 +17,19 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
         public int PriceCode { get => priceCode; }
 
-        public decimal Amount(int daysRented)
+        public virtual double Amount(int daysRented)
         {
-            var thisAmount = 0m;
+            double thisAmount = 0;
             switch (priceCode)
             {
                 case Movie.NEW_RELEASE:
                     thisAmount += daysRented * 3;
                     break;
                 case Movie.CHILDREN:
-                    thisAmount += 1.5m;
+                    thisAmount += 1.5;
                     if (daysRented > 3)
                     {
-                        thisAmount += (daysRented - 3) * 1.5m;
+                        thisAmount += (daysRented - 3) * 1.5;
                     }
                     break;
             }

@@ -22,7 +22,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         /// Calculate the amount for a rental movie
         /// </summary>
         /// <returns></returns>
-        public decimal Amount()
+        public double Amount()
         {
             return Movie.Amount(DaysRented);
         }

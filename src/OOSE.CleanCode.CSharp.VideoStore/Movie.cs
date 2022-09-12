@@ -28,7 +28,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         public virtual string Title { get; }
         public Price Price { get => _price; }
 
-        public decimal Amount(int daysRented)
+        public double Amount(int daysRented)
         {
             return _price.Amount(daysRented);
         }
