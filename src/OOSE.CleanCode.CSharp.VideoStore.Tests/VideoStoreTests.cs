@@ -40,7 +40,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Tests
         [Fact]
         public void TestMultipleRegularStatement()
         {
-            _customer.AddRental(new Rental(new Movie("Plan 9 from Outer Space", new Price(Movie.REGULAR)), 1));
+            _customer.AddRental(new Rental(new Movie("Plan 9 from Outer Space", new RegularPrice()), 1));
             _customer.AddRental(new Rental(new Movie("8 1/2", new Price(Movie.REGULAR)), 2));
             _customer.AddRental(new Rental(new Movie("Eraserhead", new Price(Movie.REGULAR)), 3));
 
