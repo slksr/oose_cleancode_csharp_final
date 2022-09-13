@@ -18,5 +18,11 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         public int PriceCode { get => priceCode; }
 
         public abstract double Amount(int daysRented);
+
+        public virtual int Renterpoints(int daysRented)
+        {
+            int renterPoints = 1;
+            return renterPoints;
+        }
     }
 }

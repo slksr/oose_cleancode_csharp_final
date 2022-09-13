@@ -63,19 +63,12 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         /// <returns></returns>
         private int FrequentRenderPoints(List<Rental> rentals)
         {
-            // just the frequentRenterPoints
-            int frequentRenterPoints = 0;
-            foreach (var each in rentals)
+            int totalRenterPoints = 0;
+            foreach (var rental in rentals)
             {
-                frequentRenterPoints++;
-
-                if (each.Movie.Price.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
-                {
-                    frequentRenterPoints++;
-                }
+                totalRenterPoints += rental.RenterPoints(rental.DaysRented);
             }
-
-            return frequentRenterPoints;
+            return totalRenterPoints ;
         }
 
         /// <summary>

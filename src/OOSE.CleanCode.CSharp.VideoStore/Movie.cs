@@ -22,11 +22,18 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
 
         public virtual string Title { get; }
-        public Price Price { get => _price; }
+        
+        // Is obsolete geworden door refactoring
+        //public Price Price { get => _price; }
 
         public double Amount(int daysRented)
         {
             return _price.Amount(daysRented);
+        }
+
+        public int RenterPoints(int daysRented)
+        {
+            return _price.Renterpoints(daysRented);
         }
 
     }

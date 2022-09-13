@@ -17,6 +17,11 @@ namespace OOSE.CleanCode.CSharp.VideoStore
         public int DaysRented { get; }
         public virtual Movie Movie { get; }
 
+        public int RenterPoints(int daysRented)
+        {
+            return Movie.RenterPoints(daysRented);
+        }
+
 
         /// <summary>
         /// Calculate the amount for a rental movie
